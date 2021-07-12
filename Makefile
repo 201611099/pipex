@@ -6,7 +6,7 @@
 #    By: hyojlee <hyojlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/03 10:49:43 by hyojlee           #+#    #+#              #
-#    Updated: 2021/06/30 16:03:17 by hyojlee          ###   ########.fr        #
+#    Updated: 2021/07/13 00:04:23 by lhj-unix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,9 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = pipex
 LIB_NAME = libft.a
 LIB_DIR = ./libft
+INC = ./
 
-SRCS = pipex.c
+SRCS = pipex.c pipex_utils.c
 OBJS = $(SRCS:.c=.o)
 
 %.o:%.c
@@ -27,7 +28,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@$(MAKE) -C $(LIB_DIR)/
 	@cp $(LIB_DIR)/$(LIB_NAME) $(LIB_NAME)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIB_NAME)
+	@$(CC) $(CFLAGS) -I$(INC) -o $(NAME) $(OBJS) $(LIB_NAME)
 
 clean:
 	@$(MAKE) clean -C $(LIB_DIR)/

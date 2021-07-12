@@ -6,7 +6,7 @@
 /*   By: hyojlee <hyojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 15:33:23 by hyojlee           #+#    #+#             */
-/*   Updated: 2021/07/01 14:12:38 by hyojlee          ###   ########.fr       */
+/*   Updated: 2021/07/12 22:24:34 by lhj-unix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*ret;
 	int		idx[3];
-	int		flag;
 	int		msize;
 
 	if (!s1)
@@ -62,7 +61,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	idx[0] = ft_idx1(s1, set);
 	idx[1] = ft_idx2(s1, set);
 	idx[2] = 0;
-	flag = 0;
 	if (!set)
 		return ((char *)s1);
 	msize = idx[1] - idx[0] + 2;
