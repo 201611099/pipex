@@ -6,7 +6,7 @@
 /*   By: hyojlee <hyojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 14:46:38 by hyojlee           #+#    #+#             */
-/*   Updated: 2021/07/14 20:17:40 by hyojlee          ###   ########.fr       */
+/*   Updated: 2021/07/14 23:29:52 by lhj-unix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char	*get_env_path(char **env)
 	return (0);
 }
 
-static void    start_pipe(t_arg *arg)
+static void    start_pipe(t_arg *arg, char **path)
 {
         int     fd[2];
         int     pid;
@@ -48,12 +48,14 @@ static void    start_pipe(t_arg *arg)
                 waitpid(pid, NULL, 0);
 		if (!arg->input.exist)
 			unlink(arg->input.name);
+		set_cmdinfo(&(arg->cmd2), path);
                 execve(arg->cmd2.path, arg->cmd2.opt, NULL);
         }
         else
         {
                 dup2(fd[1], 1);
                 close(fd[0]);
+		set_cmdinfo(&(arg->cmd1), path);
                 execve(arg->cmd1.path, arg->cmd1.opt, NULL);
         }
 }
@@ -69,7 +71,7 @@ int	main(int argc, char **argv, char **env)
 		return (1);
 	}
 	path = ft_split(get_env_path(env), ':');
-	set_arg(&arg, argc, argv, path + 1);
-	start_pipe(&arg);
+	set_arg(&arg, argc, argv);
+	start_pipe(&arg, path + 1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hyojlee <hyojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 14:46:38 by hyojlee           #+#    #+#             */
-/*   Updated: 2021/07/14 20:43:15 by lhj-unix         ###   ########.fr       */
+/*   Updated: 2021/07/14 23:21:45 by lhj-unix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ static void	set_fileinfo(t_arg *arg)
 		arg->input.exist = 0;
 	flags = O_CREAT | O_RDONLY; 
 	arg->input.fd = open(arg->input.name, flags, 0644);
-	if (arg->input.fd < 0)
-		print_err("open", 1);
+//	if (arg->input.fd < 0)
+//		print_err("open", 1);
 	flags = O_CREAT | O_RDWR | O_TRUNC;
 	arg->output.fd = open(arg->output.name, flags, 0644);
 	if (arg->output.fd < 0)
 		print_err("open", 1);
 }
 
-static void	set_cmdinfo(t_cmd *cmd, char **path)
+void	set_cmdinfo(t_cmd *cmd, char **path)
 {
 	char	*cmd_path;
 	char	**tmp_path;
@@ -57,7 +57,7 @@ static void    set_fdtable(t_arg *arg)
         dup2(arg->output.fd, 1);
 }
 
-void	set_arg(t_arg *arg, int argc, char **argv, char **path)
+void	set_arg(t_arg *arg, int argc, char **argv)
 {
 	char	**command1;
 	char	**command2;
@@ -71,7 +71,7 @@ void	set_arg(t_arg *arg, int argc, char **argv, char **path)
 	arg->cmd2.cmd = ft_strjoin("/", command2[0]);
 	arg->cmd2.opt = command2;
 	set_fileinfo(arg);
-	set_cmdinfo(&(arg->cmd1), path);
-	set_cmdinfo(&(arg->cmd2), path);
+	//set_cmdinfo(&(arg->cmd1), path);
+	//set_cmdinfo(&(arg->cmd2), path);
 	set_fdtable(arg);
 }

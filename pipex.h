@@ -6,7 +6,7 @@
 /*   By: hyojlee <hyojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 11:56:13 by hyojlee           #+#    #+#             */
-/*   Updated: 2021/07/14 20:16:42 by lhj-unix         ###   ########.fr       */
+/*   Updated: 2021/07/14 23:22:27 by lhj-unix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ typedef struct	s_arg
 	t_cmd	cmd2;
 }	t_arg;
 
-void	set_arg(t_arg *arg, int argc, char **argv, char **path);
+void	set_arg(t_arg *arg, int argc, char **argv);
+void	set_cmdinfo(t_cmd *cmd, char **path);
 
 void	print_err(char *str, int exit_status);
 
