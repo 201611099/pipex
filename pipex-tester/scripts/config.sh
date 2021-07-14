@@ -19,7 +19,7 @@ prompt_configuration()
 	while [ $check_update -ne 0 ] && [ $check_update -ne 1 ]
 	do
 		printf "Check for update on run [Y/n] "
-		read -N 1 -r check_update
+		read -n 1 -r check_update
 		[[ "$check_update" != $'\n' ]] && echo
 		case "$check_update" in
 			[nN]) check_update=0 ;;
