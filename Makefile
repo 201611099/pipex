@@ -6,18 +6,18 @@
 #    By: hyojlee <hyojlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/03 10:49:43 by hyojlee           #+#    #+#              #
-#    Updated: 2021/07/13 00:04:23 by lhj-unix         ###   ########.fr        #
+#    Updated: 2021/07/14 20:19:48 by hyojlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME = pipex
+LIB_DIR = ./libft/
 LIB_NAME = libft.a
-LIB_DIR = ./libft
 INC = ./
 
-SRCS = pipex.c pipex_utils.c
+SRCS = pipex.c pipex_set.c
 OBJS = $(SRCS:.c=.o)
 
 %.o:%.c
@@ -26,16 +26,15 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(MAKE) -C $(LIB_DIR)/
-	@cp $(LIB_DIR)/$(LIB_NAME) $(LIB_NAME)
-	@$(CC) $(CFLAGS) -I$(INC) -o $(NAME) $(OBJS) $(LIB_NAME)
+	@$(MAKE) -C $(LIB_DIR)
+	@$(CC) $(CFLAGS) -I$(INC) -o $(NAME) $(OBJS) $(LIB_DIR)$(LIB_NAME)
 
 clean:
-	@$(MAKE) clean -C $(LIB_DIR)/
+	@$(MAKE) clean -C $(LIB_DIR)
 	rm -f $(OBJS)
 
 fclean: clean
-	@$(MAKE) fclean -C $(LIB_DIR)/
+	@$(MAKE) fclean -C $(LIB_DIR)
 	rm -f $(NAME) $(LIB_NAME)
 
 re: fclean all
