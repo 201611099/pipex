@@ -6,7 +6,7 @@
 /*   By: hyojlee <hyojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 14:46:38 by hyojlee           #+#    #+#             */
-/*   Updated: 2021/07/14 23:29:52 by lhj-unix         ###   ########.fr       */
+/*   Updated: 2021/07/15 00:08:10 by lhj-unix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ int	main(int argc, char **argv, char **env)
 	}
 	path = ft_split(get_env_path(env), ':');
 	set_arg(&arg, argc, argv);
-	start_pipe(&arg, path + 1);
+	start_pipe(&arg, path);
 	return (0);
 }
