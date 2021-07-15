@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyojlee <hyojlee@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: yunslee <yunslee@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/03 10:49:43 by hyojlee           #+#    #+#              #
-#    Updated: 2021/07/14 20:19:48 by hyojlee          ###   ########.fr        #
+#    Updated: 2021/07/15 13:28:58 by yunslee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,15 @@ INC = ./
 SRCS = pipex.c pipex_set.c
 OBJS = $(SRCS:.c=.o)
 
+all: library $(NAME)
+
 %.o:%.c
 	@$(CC) $(CFLAGS) -c $^ -o $@
 
-all: $(NAME)
+library:
+	@$(MAKE) -C $(LIB_DIR)
 
 $(NAME): $(OBJS)
-	@$(MAKE) -C $(LIB_DIR)
 	@$(CC) $(CFLAGS) -I$(INC) -o $(NAME) $(OBJS) $(LIB_DIR)$(LIB_NAME)
 
 clean:
