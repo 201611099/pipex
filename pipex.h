@@ -20,21 +20,21 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct	s_cmd
+typedef struct s_cmd
 {
 	char	*cmd;
 	char	**opt;
 	char	*path;
 }	t_cmd;
 
-typedef struct	s_file
+typedef struct s_file
 {
 	char	*name;
-	int	fd;
-	int	exist;
+	int		fd;
+	int		exist;
 }	t_file;
 
-typedef struct	s_arg
+typedef struct s_arg
 {
 	t_file	input;
 	t_file	output;

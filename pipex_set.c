@@ -20,7 +20,7 @@ static void	set_fileinfo(t_arg *arg)
 	arg->input.exist = 1;
 	if (access(arg->input.name, F_OK))
 		arg->input.exist = 0;
-	flags = O_CREAT | O_RDONLY; 
+	flags = O_CREAT | O_RDONLY;
 	arg->input.fd = open(arg->input.name, flags, 0644);
 //	if (arg->input.fd < 0)
 //		print_err("open", 1);
@@ -51,10 +51,10 @@ void	set_cmdinfo(t_cmd *cmd, char **path)
 	print_err("command not found", 127);
 }
 
-static void    set_fdtable(t_arg *arg)
+static void	set_fdtable(t_arg *arg)
 {
-        dup2(arg->input.fd, 0);
-        dup2(arg->output.fd, 1);
+	dup2(arg->input.fd, 0);
+	dup2(arg->output.fd, 1);
 }
 
 void	set_arg(t_arg *arg, int argc, char **argv)
