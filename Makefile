@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 CC = gcc
+# CFLAGS = -g3 -fsanitize=address
 CFLAGS = -Wall -Wextra -Werror
 NAME = pipex
 LIB_DIR = ./libft/
